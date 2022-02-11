@@ -27,7 +27,7 @@ export default function App() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      //console.log(data);
       setApiResponse(data);
       setFetchSuccess(true)
       
@@ -35,9 +35,11 @@ export default function App() {
     })
     .catch(err => {
       console.error(err);
+      alert("Cannot fetch weather at the moment, please try later!");
+      setFetchSuccess(false)
     }).finally(()=>{
-      console.log("this is the state in finally stage");
-      console.log(apiResponse);
+      //console.log("this is the state in finally stage");
+      //console.log(apiResponse);
     }
       
     )
