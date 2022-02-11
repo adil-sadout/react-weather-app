@@ -3,6 +3,7 @@ import Wrapper from "./components/Wrapper";
 export default function App() {
 
   const [location, setLocation] = useState("");
+  const [fetchedLocation, setFetchedLocation] = useState("");
   const [apiResponse, setApiResponse] = useState([]);
   const [fetchSuccess, setFetchSuccess] = useState(false);
 
@@ -14,8 +15,9 @@ export default function App() {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setLocation(data[0].name+"-"+data[0].state+"-"+data[0].country  );
+      setFetchedLocation(data[0].name+"-"+data[0].state+"-"+data[0].country  );
       fetchWeather(data[0].lon, data[0].lat);
+      setLocation("")
       
       
     })
@@ -47,7 +49,7 @@ export default function App() {
   return (
     <div>
         
-        <Wrapper onFetchLongLatApi={fetchLongLatApi} setLocation={setLocation} location={location} apiResponse={apiResponse.daily} fetchSuccess={fetchSuccess} />
+        <Wrapper onFetchLongLatApi={fetchLongLatApi} setLocation={setLocation} location={location} fetchedLocation={fetchedLocation} apiResponse={apiResponse.daily} fetchSuccess={fetchSuccess} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import DatesWeather from "./dates/DatesWeather";
 
 export default function Wrapper(props) {
 
-  const {fetchSuccess, onFetchLongLatApi, apiResponse, setLocation, location} = props;
+  const {fetchSuccess, onFetchLongLatApi, apiResponse, setLocation, location, fetchedLocation} = props;
 
   function dateEpochConverter(epochDate, startchar="0", endchar="25"){
     let myDate = new Date(epochDate *1000);
@@ -20,7 +20,7 @@ export default function Wrapper(props) {
       <SearchWeather onFetchLongLatApi={onFetchLongLatApi} location={location} setLocation={setLocation} />
     { (fetchSuccess === true) &&
       <div>
-          <TodayWrapper location={location} todayConditions={apiResponse[0]} onDateEpochConverter={dateEpochConverter} />
+          <TodayWrapper fetchedLocation={fetchedLocation} todayConditions={apiResponse[0]} onDateEpochConverter={dateEpochConverter} />
           <DatesWeather forecasts={apiResponse} onDateEpochConverter={dateEpochConverter} />
       </div>
     }
