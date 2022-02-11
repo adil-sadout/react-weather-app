@@ -7,15 +7,13 @@ export default function App() {
   const [fetchSuccess, setFetchSuccess] = useState(false);
 
 
-/*
-  useEffect(()=>{
-*/
 
+/*
   useEffect(()=>{
     console.log("apiResponse state has been changed")
     console.log(apiResponse);
   },[apiResponse])
-
+*/
   function fetchWeather(theLocation){
 
     fetch(`https://yahoo-weather5.p.rapidapi.com/weather?location=${theLocation}&format=json&u=c`, {
