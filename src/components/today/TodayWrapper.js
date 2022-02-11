@@ -3,13 +3,13 @@ import TodayDetails from "./TodayDetails";
 import TodayImage from "./TodayImage";
 
 export default function TodayWrapper(props) {
-    const {currentObservation, location} = props;
+    const {onDateEpochConverter, todayConditions, location} = props;
 
     return (
       <div>
           <TodayImage />
-          <TodayTemp location={location} todayConditions={currentObservation} />
-          <TodayDetails todayConditions={currentObservation} />
+          <TodayTemp location={location} todayConditions={todayConditions} />
+          <TodayDetails todayConditions={todayConditions} onDateEpochConverter={onDateEpochConverter}/>
       </div>
     )
 }

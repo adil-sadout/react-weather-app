@@ -2,11 +2,11 @@ import DateWeather from "./DateWeather.js"
 
 export default function DatesWeather(props) {
 
-    const {forecasts} = props;
+    const {forecasts, onDateEpochConverter} = props;
     return (
       <div>
           {
-            forecasts.map((forecast, index) => <DateWeather key={index} forecast={forecast} /> )
+            forecasts.map((forecast, index) => <DateWeather key={index} forecast={forecast} onDateEpochConverter={onDateEpochConverter} /> )
           }
       </div>
     )

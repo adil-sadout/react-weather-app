@@ -8,24 +8,27 @@ export default function App() {
 
 
 
-/*
-  useEffect(()=>{
-    console.log("apiResponse state has been changed")
-    console.log(apiResponse);
-  },[apiResponse])
-*/
-  function fetchWeather(theLocation){
 
-    fetch(`https://yahoo-weather5.p.rapidapi.com/weather?location=${theLocation}&format=json&u=c`, {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-host": "yahoo-weather5.p.rapidapi.com",
-        "x-rapidapi-key": "95164ec703msh88844cc1f0d8036p1ea4dfjsnf5e6e08f6b94"
-      }
-    })
+  function fetchLongLatApi(theLocation){
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${theLocation}&limit=1&appid=fc3035ec0e07a38552cd853e7bd7bef6`)
     .then(response => response.json())
     .then(data => {
-      //console.log(data);
+      console.log(data)
+
+      fetchWeather(data[0].lon, data[0].lat)
+      
+    })
+    .catch(err => console.err("We are facing issues finding the location's weather, please try again later!"))
+    .finally(console.log("done fetching"))
+  }
+
+
+  function fetchWeather(long, lat){
+
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&exclude=current,minutely,hourly,alerts&appid=fc3035ec0e07a38552cd853e7bd7bef6`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
       setApiResponse(data);
       setFetchSuccess(true)
       
@@ -35,12 +38,7 @@ export default function App() {
       console.error(err);
       alert("Cannot fetch weather at the moment, please try later!");
       setFetchSuccess(false)
-    }).finally(()=>{
-      //console.log("this is the state in finally stage");
-      //console.log(apiResponse);
-    }
-      
-    )
+    })
   }
   
   //BETTER API FOR WEATHER https://openweathermap.org/appid
@@ -48,7 +46,7 @@ export default function App() {
   return (
     <div>
         
-        <Wrapper onFetchWeather={fetchWeather} setLocation={setLocation} location={location} apiResponse={apiResponse} fetchSuccess={fetchSuccess} />
+        <Wrapper onFetchLongLatApi={fetchLongLatApi} setLocation={setLocation} location={location} apiResponse={apiResponse.daily} fetchSuccess={fetchSuccess} />
     </div>
   );
 }
