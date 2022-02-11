@@ -14,8 +14,9 @@ export default function App() {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-
-      fetchWeather(data[0].lon, data[0].lat)
+      setLocation(data[0].name+"-"+data[0].state+"-"+data[0].country  );
+      fetchWeather(data[0].lon, data[0].lat);
+      
       
     })
     .catch(err => alert("We are facing issues finding the location's weather, please try again later!"))
@@ -35,7 +36,7 @@ export default function App() {
       
     })
     .catch(err => {
-      console.log(err);
+      //console.log(err);
       alert("Cannot fetch weather at the moment, please try later!");
       setFetchSuccess(false)
     })

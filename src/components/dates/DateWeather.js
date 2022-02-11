@@ -4,7 +4,7 @@ export default function DateWeather(props) {
 
   const {forecast, onDateEpochConverter} = props;
 
-  console.log(forecast)
+  //console.log(forecast)
 
     return (
       <div>
