@@ -10,7 +10,7 @@ export default function App() {
 
 
   function fetchLongLatApi(theLocation){
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${theLocation}&limit=1&appid=fc3035ec0e07a38552cd853e7bd7bef6`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${theLocation}&limit=1&appid=fc3035ec0e07a38552cd853e7bd7bef6`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
