@@ -5,7 +5,7 @@ export default function TodayWrapper(props) {
     const {onDateEpochConverter, todayConditions,  fetchedLocation} = props;
 
     return (
-      <div className="p-5">
+      <div className="pt-5 pb-4 text-center">
           <TodayTemp fetchedLocation={fetchedLocation} todayConditions={todayConditions} />
           <TodayDetails todayConditions={todayConditions} onDateEpochConverter={onDateEpochConverter}/>
       </div>

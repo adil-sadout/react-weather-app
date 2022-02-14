@@ -13,10 +13,10 @@ export default function SearchWeather(props){
     }
 
     return(
-        <div className="text-center border p-5">
+        <div className="text-center border p-2">
             <label>
-                Check The Current Temperature Where You Live:
-                <input className="m-5" onKeyDown={keyboardClick} placeholder="what's your city" value={location} onChange={(e)=>setLocation(e.target.value)} />
+                <p> Check The Current Temperature Where You Live: </p>
+                <input className="m-2" onKeyDown={keyboardClick} placeholder="what's your city" value={location} onChange={(e)=>setLocation(e.target.value)} />
                 <button className="btn btn-primary" onClick={()=>{
                     onFetchLongLatApi(location)
                 }} >Check Weather</button>
