@@ -6,22 +6,18 @@ export default function SearchWeather(props){
     const {onFetchLongLatApi, setLocation, location} = props;
 
     function keyboardClick(event){
-
-        // Number 13 is the "Enter" key on the keyboard
         if (event.key === "Enter") {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
             onFetchLongLatApi(location)
         }
 
     }
 
     return(
-        <div className="searchWeather">
+        <div className="text-center border p-5">
             <label>
-                <input onKeyDown={(e)=>keyboardClick(e)} placeholder="what's your city" value={location} onChange={(e)=>setLocation(e.target.value)} />
-                <button onClick={()=>{
+                Check The Current Temperature Where You Live:
+                <input className="m-5" onKeyDown={keyboardClick} placeholder="what's your city" value={location} onChange={(e)=>setLocation(e.target.value)} />
+                <button className="btn btn-primary" onClick={()=>{
                     onFetchLongLatApi(location)
                 }} >Check Weather</button>
             </label>

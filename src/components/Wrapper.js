@@ -19,10 +19,12 @@ export default function Wrapper(props) {
     <>
       <SearchWeather onFetchLongLatApi={onFetchLongLatApi} location={location} setLocation={setLocation} />
     { (fetchSuccess === true) &&
-      <div>
-          <TodayWrapper fetchedLocation={fetchedLocation} todayConditions={apiResponse[0]} onDateEpochConverter={dateEpochConverter} />
-          <DatesWeather forecasts={apiResponse} onDateEpochConverter={dateEpochConverter} />
-      </div>
+      <>
+        <TodayWrapper fetchedLocation={fetchedLocation} todayConditions={apiResponse[0]} onDateEpochConverter={dateEpochConverter} />
+        <div className="container">
+            <DatesWeather forecasts={apiResponse} onDateEpochConverter={dateEpochConverter} />
+        </div>
+      </>
     }
     </>
     
