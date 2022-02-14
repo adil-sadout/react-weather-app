@@ -47,7 +47,7 @@ export default function App() {
   //BETTER API FOR WEATHER https://openweathermap.org/appid
 
   return (
-    <div class="container mt-5 mb-5 p-5 border border-dark">
+    <div class="container mt-5 mb-5 p-5 border border-dark bg-light">
         
         <Wrapper onFetchLongLatApi={fetchLongLatApi} setLocation={setLocation} location={location} fetchedLocation={fetchedLocation} apiResponse={apiResponse.daily} fetchSuccess={fetchSuccess} />
     </div>

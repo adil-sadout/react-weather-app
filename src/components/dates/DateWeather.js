@@ -7,7 +7,7 @@ export default function DateWeather(props) {
   //console.log(forecast)
 
     return (
-      <div className="col-md-5 mx-auto g-4 border border-dark p-5">
+      <div className="col-md-5 mx-auto g-4 border border-dark p-5 bg-white">
           <h3>{onDateEpochConverter(forecast.dt,0,11)}</h3>
           <p>Low: {forecast.temp.min} °C</p>
           <p>High: {forecast.temp.max} °C</p>

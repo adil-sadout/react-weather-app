@@ -13,7 +13,7 @@ export default function SearchWeather(props){
     }
 
     return(
-        <div className="text-center border p-2">
+        <div className="text-center border pb-5 pt-5 bg-white">
             <label>
                 <p> Check The Current Temperature Where You Live: </p>
                 <input className="m-2" onKeyDown={keyboardClick} placeholder="what's your city" value={location} onChange={(e)=>setLocation(e.target.value)} />
